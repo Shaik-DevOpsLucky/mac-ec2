@@ -160,6 +160,48 @@ chmod u+w ~/.zshrc
 ```
 
 ---
+---
+
+```bash
+flutter doctor --android-licenses
+```
+
+Press `y` for all licenses.
+
+Then fix Xcode:
+
+```bash
+sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+sudo xcodebuild -runFirstLaunch
+xcrun simctl list runtimes
+```
+
+If simulator runtimes are still missing, open:
+
+**Xcode → Settings → Platforms**
+Download/install the latest **iOS Simulator Runtime**. Apple also recommends installing simulator runtimes from Xcode’s platform/runtime downloads. ([Apple Developer][1])
+
+Install CocoaPods:
+
+```bash
+brew install cocoapods
+pod --version
+```
+
+Flutter requires CocoaPods for iOS/macOS plugins. ([Flutter Docs][2])
+
+Finally verify:
+
+```bash
+flutter doctor
+```
+
+Expected result: Android license warning gone, CocoaPods warning gone, and Xcode simulator runtime warning gone.
+
+[1]: https://developer.apple.com/documentation/xcode/downloading-and-installing-additional-xcode-components?utm_source=chatgpt.com "Downloading and installing additional Xcode components"
+[2]: https://docs.flutter.dev/platform-integration/ios/setup?utm_source=chatgpt.com "Set up iOS development"
+
+---
 
 ## ❌ Issue 3: sshd error while sourcing `.zshrc`
 
@@ -275,3 +317,4 @@ This version is:
 ---
 # Prepared by:
 *Shaik Moulali*
+#DevOps Consultant
